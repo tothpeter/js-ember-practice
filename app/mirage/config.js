@@ -16,11 +16,20 @@ function transformCollectionToJSONApi(type, records) {
   return { data: data };
 }
 
+function transformSingleObjectToJSONApi(type, record) {
+  return { data: transformToJSONApi(type, record) };
+}
+
 
 export default function() {
 
   this.get('/api/tasks', function(db) {
     return transformCollectionToJSONApi('tasks', db.tasks);
+  });
+
+  this.get('/api/tasks/:id', function(db, request) {
+    var task = db.tasks.find(request.params.id);
+    return transformSingleObjectToJSONApi('tasks', task);
   });
 
 
