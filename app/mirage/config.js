@@ -1,3 +1,22 @@
+function transformToJSONApi(type, record) {
+  return {
+    id: record.id,
+    type: type,
+    attributes: record
+  };
+}
+
+function transformCollectionToJSONApi(type, records) {
+  let data = {};
+
+  data = records.map((record) => {
+    return transformToJSONApi(type, record);
+  });
+
+  return { data: data };
+}
+
+
 export default function() {
 
   // These comments are here to help you get started. Feel free to delete them.
