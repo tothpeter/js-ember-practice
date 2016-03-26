@@ -1,4 +1,19 @@
-{{#each model as |task|}}
-  {{task.title}}
-  <br>
-{{/each}}
+<h1>Tasks</h1>
+
+<div class="row">
+  <div class="cel-lg-4 col-md-4">
+    <ul class="list-group">
+      {{#each model as |task|}}
+        <li class="list-group-item">
+          {{link-to "show" "tasks.task.show" task}}
+          {{task.title}}
+        </li>
+      {{/each}}
+    </ul>
+
+  </div>
+
+  <div class="cel-lg-8 col-md-8">
+    {{outlet}}
+  </div>
+</div>
