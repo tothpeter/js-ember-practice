@@ -19,6 +19,11 @@ function transformCollectionToJSONApi(type, records) {
 
 export default function() {
 
+  this.get('/api/tasks', function(db) {
+    return transformCollectionToJSONApi('tasks', db.tasks);
+  });
+
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*
