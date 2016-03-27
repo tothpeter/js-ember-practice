@@ -3,7 +3,9 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     destroyTask() {
-      return this.get('model').destroyRecord();
+      this.get('model').destroyRecord().then(() => {
+        this.transitionToRoute('tasks');
+      });
     }
   }
 });
