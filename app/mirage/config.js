@@ -32,6 +32,13 @@ export default function() {
     return transformSingleObjectToJSONApi('tasks', task);
   });
 
+  this.post('/api/tasks', function(db, request) {
+    let body = JSON.parse(request.requestBody);
+    let newRecord = db.tasks.insert(body.data.attributes);
+
+    return transformSingleObjectToJSONApi('tasks', newRecord);
+  });
+
   this.patch('/api/tasks/:id', function(db, request) {
     let body = JSON.parse(request.requestBody);
 
