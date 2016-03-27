@@ -1,11 +1,1 @@
-<div class="form-group">
-  <label for="exampleInputEmail1">Title</label>
-  {{input value=model.title class="form-control" placeholder="Title"}}
-</div>
-
-<div class="form-group">
-  <label for="exampleInputEmail1">Level</label>
-  {{input value=model.level class="form-control" placeholder="Level"}}
-</div>
-
-<button class="btn btn-default" {{action "save"}}>Save</button>
+{{task-form model=model save=(action "save")}}
