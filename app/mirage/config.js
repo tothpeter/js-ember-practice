@@ -32,6 +32,16 @@ export default function() {
     return transformSingleObjectToJSONApi('tasks', task);
   });
 
+  this.patch('/api/tasks/:id', function(db, request) {
+    let body = JSON.parse(request.requestBody);
+
+    db.tasks.update(body.data.id, body.data.attributes);
+
+    var responseData = db.tasks.find(body.data.id);
+
+    return { data: transformToJSONApi('task', responseData) };
+  });
+
   this.del('/api/tasks/:id', 'tasks', 204);
 
 
