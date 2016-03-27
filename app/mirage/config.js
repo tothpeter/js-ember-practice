@@ -32,6 +32,8 @@ export default function() {
     return transformSingleObjectToJSONApi('tasks', task);
   });
 
+  this.del('/api/tasks/:id', 'tasks', 204);
+
 
   // These comments are here to help you get started. Feel free to delete them.
 
